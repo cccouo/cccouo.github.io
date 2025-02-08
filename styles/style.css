@@ -53,3 +53,55 @@ footer {
     width: 100%;
     bottom: 0;
 }
+
+/* 子模块列表样式 */
+.module-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.module-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px); /* 每行显示3个模块 */
+    max-width: calc(33.333% - 40px);
+}
+
+.module-item h3 {
+    margin-top: 0;
+}
+
+.module-item p {
+    margin: 10px 0;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.read-more:hover {
+    background-color: #555;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace;
+    color: #d63384;
+}
+
+
