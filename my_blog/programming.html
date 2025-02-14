@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="icon\金毛.png">
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <div id="welcome-text">
+            <span class="fade-part">欢迎来到</span>
+            <span id="main-text">编程版块</span>
+        </div>
+        <button id="enter-button">Enter</button>
+    </div>
+    
+    <!-- 页眉导航栏 -->
+    <header id="header">
+        <!-- 使用 <a> 标签（超链接标签）将 <div> 标签包裹起来，这样点击整个 <div> 区域都能触发超链接跳转。 -->
+        <a href="index.html">
+            <div id="logo-container">
+                <img src="icon\金毛.png" alt="Custom Icon" width="50" height="50">  cccouo
+            </div>
+        </a>
+        
+        <nav id="nav">
+            <li><a href="philosophy.html">哲学</a></li>
+            <li><a href="politics.html">时事</a></li>
+            <li><a href="programming.html">编程</a></li>
+            <li><a href="notes.html">杂记</a></li>
+        </nav>
+    </header>
+
+    <main id="main-content"> 
+            <section>
+                <h2>编程子模块</h2>
+                <div class="module-list">
+                    <!-- HTML 子模块 -->
+                    <div class="module-item">
+                        <h3>HTML</h3>
+                        <p>学习 HTML 的基础知识和高级技巧。</p>
+                        <a href="article/programming/html/index.html" class="read-more">进入模块</a>
+                    </div>
+            
+                    <!-- CSS 子模块 -->
+                    <div class="module-item">
+                        <h3>CSS</h3>
+                        <p>掌握 CSS 的样式设计和布局技巧。</p>
+                        <a href="article/programming/css/index.html" class="read-more">进入模块</a>
+                    </div>
+            
+                    <!-- Python 子模块 -->
+                    <div class="module-item">
+                        <h3>Python</h3>
+                        <p>学习 Python 编程语言的基础和进阶内容。</p>
+                        <a href="article/programming/python/index.html" class="read-more">进入模块</a>
+                    </div>
+                </div>
+            </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 我的博客</p>
+    </footer>
+    
+    <!-- GSAP 动画库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
