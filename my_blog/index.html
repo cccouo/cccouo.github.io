@@ -12,13 +12,15 @@
 <body>
     <!-- 全屏动画容器 -->
     <div id="welcome-screen">
-        <h1 id="welcome-text">
-            <span class="fade-part">欢迎来到</span>
-            <span id="main-text">cccouo</span>
-            <span class="fade-part">的博客</span>
-        </h1>
-        <button id="enter-button">Enter</button>
+        <div id="header-bar"></div>
+        <div id="welcome-text">
+            <span class="fade-part">欢迎来到 </span>
+            <span id="main-text">  CCCOUO的小站</span>
+        </div>
+        <div id="footer-bar"></div>
+        <button id="enter-button"></button>
     </div>
+
 
     <!-- 页眉导航栏 -->
     <header id="header">
@@ -29,12 +31,18 @@
             </div>
         </a>
         <nav id="nav">
+            <div class="nav-content"></div>
             <li><a href="philosophy.html">哲学</a></li>
             <li><a href="politics.html">时事</a></li>
             <li><a href="programming.html">编程</a></li>
             <li><a href="notes.html">杂记</a></li>
         </nav>
     </header>
+
+    <!-- 视频背景 -->
+    <video autoplay muted loop id="video-bg">
+        <source src="video\mor.mp4" type="video/mp4">
+    </video>
 
     <!-- 主页内容 -->
     <main id="main-content">
@@ -52,9 +60,7 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2023 cccouo的博客</p>
-    </footer>
+
 
     <!-- GSAP 动画库 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
