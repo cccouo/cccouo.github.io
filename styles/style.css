@@ -1,0 +1,512 @@
+/* 定义第一种自定义字体 */
+@font-face {
+    font-family: 'Font';  /* 自定义字体名称，后续引用时使用 */
+    src: url('../font/BT.otf') format('opentype');
+    font-weight: normal; /* 字体粗细 */
+    font-style: normal; /* 字体样式 */
+}
+
+/* 定义第二种自定义字体 */
+@font-face {
+    font-family: 'Font2';
+    src: url('../font/jg.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 应用第一种字体到 h1 中的第一个 span */
+h1 span:first-child {
+    font-family: 'Font', sans-serif;
+}
+
+/* 应用第二种字体到 h1 中的第二个 span */
+h1 span:last-child {
+    font-family: 'FontTwo', sans-serif;
+}
+
+/* html里面要想感受这个效果，可以在body标签内这样写：<h1><span>这部分用第一种字体 </span><span>这部分用第二种字体</span></h1>， 即通过span实现在同一个标签内使用2种字体 */
+
+/* 全屏动画容器 */
+#welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff8e1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* 添加过渡效果 */
+    transition: opacity 1s ease-out;
+}
+
+/* 欢迎文字 */
+#welcome-text {
+    color: #ffb300;
+    font-size: 9rem; /* 字体大小为父元素（body）字体大小的 1.2 倍，即 16px * 1.2 = 19.2px * font-size: 24px; 设置绝对尺寸*/
+    letter-spacing: 2px; /* 为标签内的文本设置字间距为 5 像素 */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    background: #fff8e1;
+    padding: 0 20px;
+    transform: translateX(-100%);
+    /* 使用具有缓停效果的贝塞尔曲线 */
+    animation: slide-in-left 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* 应用自定义字体 */
+    font-family: 'Font', sans-serif;
+}
+
+/* 页眉长条 */
+#header-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150%;
+    height: 80px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ffb300,
+        #ffb300 30px,
+        #fffde7,
+        #fffde7 60px
+    );
+    transform: translateX(100%) skewX(-20deg);
+    /* 使用具有缓停效果的贝塞尔曲线 */
+    animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* 页脚长条 */
+#footer-bar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150%;
+    height: 80px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ffb300,
+        #ffb300 30px,
+        #fffde7,
+        #fffde7 60px
+    );
+    transform: translateX(100%) skewX(-20deg);
+    /* 使用具有缓停效果的贝塞尔曲线 */
+    animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* 需要淡出的部分 */
+.fade-part {
+    margin: 0 10px;
+}
+
+/* 主文字 */
+#main-text {
+    color: #ffb300;
+    display: inline-block;
+    position: relative;
+    margin: 0 10px;
+    font-family: 'Font', sans-serif;
+}
+
+/* 自定义图片按钮 */
+#enter-button {
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    background-image: url('../pic/pause.svg'); /* 暂停图标链接 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px);
+    /* 使用具有缓停效果的贝塞尔曲线 */
+    animation: fade-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
+    transition: transform 0.2s ease;
+}
+
+#enter-button:hover {
+    background-image: url('../pic/play.svg'); /* 播放图标链接 */
+}
+
+#enter-button:active {
+    animation: bounce 0.3s ease;
+}
+
+/* 淡入上移动画 */
+@keyframes fade-in-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 滑入动画 - 从左 */
+@keyframes slide-in-left {
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 滑入动画 - 从右 */
+@keyframes slide-in-right {
+    to {
+        transform: translateX(0) skewX(-20deg);
+    }
+}
+
+/* 滑出动画 - 欢迎文字从左向右 */
+@keyframes slide-out-welcome-text {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* 滑出动画 - 页眉和页脚从右向左 */
+@keyframes slide-out-bars {
+    from {
+        transform: translateX(0) skewX(-20deg);
+    }
+    to {
+        transform: translateX(-100%) skewX(-20deg);
+    }
+}
+
+/* 弹跳动画 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(0.9);
+    }
+}
+
+
+
+
+
+/* 欢迎文字滑出动画 */
+@keyframes slide-out-welcome-text {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+/* 页眉和页脚滑出动画 */
+@keyframes slide-out-bars {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+
+/* 设置页眉样式 */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #dce1f8; 
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    opacity: 0; 
+    transition: all 1s ease; /* 添加过渡效果 */
+} 
+
+/* 设置页眉中 h1 元素的样式 */
+header h1 {
+    /* 去除 h1 元素的外边距 */
+    margin: 0;
+}
+
+/* 设置导航栏中无序列表的样式 */
+nav ul {
+    /* 去除列表项的默认样式（如圆点） */
+    list-style: none;
+    /* 去除列表的内边距 */
+    padding: 0;
+    /* 去除列表的外边距 */
+    margin: 0;
+    /* 使用 Flexbox 布局 */
+    display: flex;
+    /* 让列表项在主轴上居中对齐 */
+    justify-content: center;
+}
+
+/* 设置 <a> 标签无下划线 */
+a {
+    text-decoration: none;
+}
+
+/* 可以根据需要设置鼠标悬停时的样式 */
+a:hover {
+    /*text-decoration: underline;*/
+    /*color: red;*/
+
+    /*字体大小变化;*/
+    font-size: 1.2em;
+
+    /*字体粗细变化;*/
+    /*font-weight: bold;*/
+
+    /*文字阴影；*/
+    /*text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);*/
+}
+
+#logo-container {
+    padding: 5px 10px;
+    font-size: 3.1rem;
+    color: #f8cf2d;
+    cursor: pointer;
+    margin-right: 35px;
+    font-weight: bold;
+    font-family: 'Font2';
+}
+
+#nav-cccouo {
+    display: inline-block; /* 初始显示导航栏的 cccouo */
+}
+
+#nav {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    font-weight: 900;
+}
+
+#nav li {
+    font-family: 'Font'; 
+    /*用于设置列表项内部内容与边框之间的间距。可以分别设置上下左右的间距，也可以统一设置。*/
+    padding: 10px; /* 上下左右都为 10px */
+    /* 或者分别设置，例如：padding: 5px 10px; 表示上下 5px，左右 10px */
+    
+    /*用于设置列表项与其他元素之间的间距。同样可以分别设置各个方向的间距。*/
+    margin: 0 5px; /* 上下为 0，左右为 5px */
+
+    /*指定列表项内文字的字体。*/
+    font-family: Arial, sans-serif;
+
+    /*设置文字的大小。*/
+    font-size: 16px;
+
+    /*控制文字的粗细。可以使用关键字（如 bold、normal）或数值（如 400 表示正常，700 表示加粗）。*/
+    font-weight: bold;
+
+    /*设置文字的颜色。*/
+    color: #080808; /* 深灰色 */
+
+    /*设置鼠标悬停在列表项上时的光标样式，常见的有 pointer（手型指针）。*/
+    cursor: pointer;
+
+    /*设置文字所在按钮的背景颜色。*/
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease; /* 背景颜色变化在 0.3 秒内完成，使用 ease 缓动函数 */
+}
+
+/*使用 @keyframes 定义动画，然后通过 animation 属性将动画应用到元素上。例如，鼠标悬停时让导航项有一个缩放的动画效果：*/
+@keyframes scaleUp {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+#nav li:hover {
+    background-color: #ddd; /* 悬停时背景颜色变深 */
+    color: #ffcc00; /* 悬停时文字颜色变白 */
+    animation: scaleUp 0.3s ease; /*使用 @keyframes 定义动画，然后通过 animation 属性将动画应用到元素上。例如，鼠标悬停时让导航项有一个缩放的动画效果：*/
+}
+
+#nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+
+
+ /* 导航栏隐藏部分样式 */
+ .nav-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* 导航栏隐藏状态 */
+#header.hidden,
+#footer.hidden {
+    background-color: transparent;
+}
+
+#header.hidden .nav-content,
+#footer.hidden .nav-content {
+    opacity: 0;
+}
+
+/* 导航栏悬停样式 */
+#header:hover,
+#footer:hover {
+    background-color: #dce1f8;
+}
+
+#header:hover .nav-content,
+#footer:hover .nav-content {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+/* 通用样式 */
+/* 设置网页主体样式 */
+body {
+    /* 设置字体为 Arial 或通用的无衬线字体 
+
+    serif：衬线字体（如 Times New Roman）。
+
+    sans-serif：无衬线字体（如 Arial）。  
+
+    monospace：等宽字体（如 Courier New）。
+
+    cursive：手写体（如 Comic Sans）。
+
+    fantasy：装饰性字体（如 Impact）。*/
+    font-family: Arial, sans-serif;
+    /* 设置行高为 1.6 */
+    line-height: 1.6;
+    /* 去除外边距 */
+    margin: 0;
+    /* 去除内边距 */
+    padding: 0;
+    /* 设置背景颜色为浅灰色 */
+    background-color: #fff8e1;
+    /* 设置文本颜色为深灰色 */
+    color: #333;
+}
+
+#video-bg {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    opacity: 0.5; /* 调整视频的透明度 */ 
+}
+/* 主页内容 */
+#main-content {
+    margin-top: 80px; /* 避免与页眉重叠 */
+    padding: 20px;
+    opacity: 0; /* 初始隐藏 */
+    transition: opacity 1s ease-in-out;
+}
+
+/* 设置页脚的样式 */
+footer {
+    /* 设置页脚背景颜色为深灰色 */
+    background-color: #dce1f8;
+    /* 设置页脚文本颜色为白色 */
+    color: #161616;
+    /* 设置页脚文本居中对齐 */
+    text-align: center;
+    /* 设置页脚上下内边距为 10px，左右内边距为 0 */
+    padding: 2px 0;
+    /* 设置页脚固定在页面底部 */
+    position: fixed;
+    /* 设置页脚宽度为 100% */
+    width: 100%;
+    /* 让页脚固定在页面底部 */
+    bottom: 0;
+    line-height: 1.5; 
+    box-sizing: border-box; /* 确保 padding 包含在宽度内 */
+    z-index: 100; /* 适当增加 z-index 值，确保页脚在其他元素之上 */
+}
+
+
+
+
+/* 子模块列表样式 */
+.module-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.module-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 40px); /* 每行显示3个模块 */
+    max-width: calc(33.333% - 40px);
+}
+
+.module-item h3 {
+    margin-top: 0;
+}
+
+.module-item p {
+    margin: 10px 0;
+}
+
+.read-more {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.read-more:hover {
+    background-color: #555;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+code {
+    font-family: Consolas, "Courier New", monospace;
+    color: #d63384;
+}
