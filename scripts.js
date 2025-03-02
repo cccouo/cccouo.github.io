@@ -5,9 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const welcomeText = document.getElementById('welcome-text');
     const headerBar = document.getElementById('header-bar');
     const footerBar = document.getElementById('footer-bar');
-
     const mainContent = document.getElementById('main-content');
-
+    const nav = document.getElementById('nav');
     let headerTimer;
     let footerTimer;
 
@@ -23,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
         clearTimeout(timer);
         timer = setTimeout(() => {
             hideNavContent(element);
+            if (element === header) {
+                navItems.forEach(item => hideNavContent(item));
+            }
         }, 2000);
         return timer;
     };
@@ -76,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 鼠标进入导航栏事件
     header.addEventListener('mouseenter', () => {
         showNavContent(header);
+        navItems.forEach(item => showNavContent(item));
         clearTimeout(headerTimer);
     });
 

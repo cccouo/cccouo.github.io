@@ -1,12 +1,11 @@
-/* 定义第一种自定义字体 */
+/* 开场动画字体1 */
 @font-face {
-    font-family: 'Font';  /* 自定义字体名称，后续引用时使用 */
+    font-family: 'Font'; 
     src: url('../font/BT.otf') format('opentype');
-    font-weight: normal; /* 字体粗细 */
-    font-style: normal; /* 字体样式 */
+    font-weight: normal; 
+    font-style: normal; 
 }
-
-/* 定义第二种自定义字体 */
+/* 开场动画字体2 */
 @font-face {
     font-family: 'Font2';
     src: url('../font/jg.ttf') format('truetype');
@@ -14,13 +13,13 @@
     font-style: normal;
 }
 
-/* 应用第一种字体到 h1 中的第一个 span */
-h1 span:first-child {
+
+span:first-child {
     font-family: 'Font', sans-serif;
 }
 
-/* 应用第二种字体到 h1 中的第二个 span */
-h1 span:last-child {
+/* 应用第二种字体到第二个 span */
+span:last-child {
     font-family: 'FontTwo', sans-serif;
 }
 
@@ -298,18 +297,17 @@ a:hover {
     list-style-type: none;
     display: flex;
     justify-content: space-around;
-    width: 40%;
+    width: 50%;
     font-weight: 900;
 }
 
-#nav li {
-    font-family: 'Font'; 
+#nav ul li {
     /*用于设置列表项内部内容与边框之间的间距。可以分别设置上下左右的间距，也可以统一设置。*/
     padding: 10px; /* 上下左右都为 10px */
     /* 或者分别设置，例如：padding: 5px 10px; 表示上下 5px，左右 10px */
     
     /*用于设置列表项与其他元素之间的间距。同样可以分别设置各个方向的间距。*/
-    margin: 0 5px; /* 上下为 0，左右为 5px */
+    margin: 0 50px; /* 上下为 0，左右为 5px */
 
     /*指定列表项内文字的字体。*/
     font-family: Arial, sans-serif;
@@ -328,8 +326,10 @@ a:hover {
 
     /*设置文字所在按钮的背景颜色。*/
     background-color: #f0f0f0;
-    transition: background-color 0.3s ease; /* 背景颜色变化在 0.3 秒内完成，使用 ease 缓动函数 */
+    /* 背景颜色变化在 0.3 秒内完成，使用 ease 缓动函数 */
+    transition: opacity 0.3s ease;
 }
+
 
 /*使用 @keyframes 定义动画，然后通过 animation 属性将动画应用到元素上。例如，鼠标悬停时让导航项有一个缩放的动画效果：*/
 @keyframes scaleUp {
@@ -510,3 +510,4 @@ code {
     font-family: Consolas, "Courier New", monospace;
     color: #d63384;
 }
+
